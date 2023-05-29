@@ -1,0 +1,64 @@
+1
+00:00:00,000 --> 00:00:03,908
+We will create a non-measurable subset on S1
+
+2
+00:00:16,000 --> 00:00:18,965
+we will use the notation p in brackets
+
+3
+00:00:19,065 --> 00:00:21,708
+to mean the equivalence class of p
+
+4
+00:00:21,800 --> 00:00:24,696
+Now, we can do this for all points, so
+
+5
+00:00:24,796 --> 00:00:28,876
+that we have a collection of all equivalence classes.
+
+6
+00:00:28,933 --> 00:00:33,695
+Using the Axiom of Choice, we can pick exactly one point from
+
+7
+00:00:33,795 --> 00:00:39,513
+each of these equivalence classes. This will be our non-measurable set M.
+
+8
+00:00:39,600 --> 00:00:42,818
+Notice now that we can form the whole circle
+
+9
+00:00:42,918 --> 00:00:46,364
+again by looking at all rational rotations of M
+
+10
+00:00:47,400 --> 00:00:51,116
+By sigma additivity, we then get the following
+
+11
+00:00:54,200 --> 00:00:56,788
+So then, what is mu of M?
+
+12
+00:00:57,866 --> 00:01:00,892
+If we take mu of M is zero, then the
+
+13
+00:01:00,992 --> 00:01:04,798
+measure of the unit circle must also be zero.
+
+14
+00:01:04,866 --> 00:01:07,697
+But if we take mu of M to be nonzero,
+
+15
+00:01:07,797 --> 00:01:11,894
+then the measure of the unit circle must be infinite!
+
+16
+00:01:11,933 --> 00:01:16,489
+It should be clear that neither of these options is a good choice.
+

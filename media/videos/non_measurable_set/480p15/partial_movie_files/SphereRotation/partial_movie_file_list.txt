@@ -1,0 +1,4 @@
+# This file is used internally by FFMPEG.
+file 'file:/Users/teun/coding/python/banach_tarski_animations/media/videos/non_measurable_set/480p15/partial_movie_files/SphereRotation/3180571620_2503179241_1433720885.mp4'
+file 'file:/Users/teun/coding/python/banach_tarski_animations/media/videos/non_measurable_set/480p15/partial_movie_files/SphereRotation/2423822815_3505820929_3960993811.mp4'
+file 'file:/Users/teun/coding/python/banach_tarski_animations/media/videos/non_measurable_set/480p15/partial_movie_files/SphereRotation/111596867_957343386_2741875476.mp4'

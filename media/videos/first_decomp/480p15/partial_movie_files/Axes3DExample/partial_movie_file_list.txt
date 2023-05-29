@@ -1,0 +1,7 @@
+# This file is used internally by FFMPEG.
+file 'file:/Users/teun/coding/python/banach_tarski_animations/media/videos/first_decomp/480p15/partial_movie_files/Axes3DExample/3622039284_2467308163_223132457.mp4'
+file 'file:/Users/teun/coding/python/banach_tarski_animations/media/videos/first_decomp/480p15/partial_movie_files/Axes3DExample/3761911312_645682970_181671966.mp4'
+file 'file:/Users/teun/coding/python/banach_tarski_animations/media/videos/first_decomp/480p15/partial_movie_files/Axes3DExample/371397849_3731881352_2359776826.mp4'
+file 'file:/Users/teun/coding/python/banach_tarski_animations/media/videos/first_decomp/480p15/partial_movie_files/Axes3DExample/3085205667_3414728166_3357432833.mp4'
+file 'file:/Users/teun/coding/python/banach_tarski_animations/media/videos/first_decomp/480p15/partial_movie_files/Axes3DExample/3195079836_1086903126_1132223484.mp4'
+file 'file:/Users/teun/coding/python/banach_tarski_animations/media/videos/first_decomp/480p15/partial_movie_files/Axes3DExample/3642497764_795458434_2579281017.mp4'

@@ -1,5 +1,4 @@
 # This file is used internally by FFMPEG.
-file 'file:C:/Users/Teun/coding/Python/banach_tarski_animations/media/videos/playground/480p15/partial_movie_files/BackgroundSquare/4266129954_1936580875_223132457.mp4'
-file 'file:C:/Users/Teun/coding/Python/banach_tarski_animations/media/videos/playground/480p15/partial_movie_files/BackgroundSquare/1442284246_329969645_2522244178.mp4'
-file 'file:C:/Users/Teun/coding/Python/banach_tarski_animations/media/videos/playground/480p15/partial_movie_files/BackgroundSquare/1442284246_4037151762_4067559736.mp4'
-file 'file:C:/Users/Teun/coding/Python/banach_tarski_animations/media/videos/playground/480p15/partial_movie_files/BackgroundSquare/1442284246_125286499_3547520947.mp4'
+file 'file:/Users/teun/coding/python/banach_tarski_animations/media/videos/playground/480p15/partial_movie_files/BackgroundSquare/3163782288_3424557323_223132457.mp4'
+file 'file:/Users/teun/coding/python/banach_tarski_animations/media/videos/playground/480p15/partial_movie_files/BackgroundSquare/2201830969_329969645_1799691803.mp4'
+file 'file:/Users/teun/coding/python/banach_tarski_animations/media/videos/playground/480p15/partial_movie_files/BackgroundSquare/2201830969_950581817_3924493092.mp4'
