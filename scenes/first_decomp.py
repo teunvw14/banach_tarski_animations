@@ -1,4 +1,5 @@
 from manim import *
+from manim_voiceover import VoiceoverScene
 from manim.utils.color import Colors
 import random
 from math import sqrt, acos
@@ -73,6 +74,56 @@ def generate_random_rotations_with_labels(n):
 # sigma along x-axis
 # tau along y-axis
 
+def generate_rotation_arrow(start_point, sphere_radius, rotation_comp, color=BLACK, eps=0):
+    start_point_location = start_point.get_center()
+    start = 0
+    end = 0
+    if rotation_comp in (SIGMA, TAU):
+        end = np.cos(1/3)
+    elif rotation_comp in (SIGMA_I, TAU_I):
+        start = -np.cos(1/3)
+
+    sigma_lambda = lambda t: start_point_location + sphere_radius * np.array([0, np.cos(t), np.sin(t)])
+    tau_lambda = lambda t: start_point_location + sphere_radius * np.array([np.cos(t), 0, np.sin(t)])
+
+    result = VGroup()
+
+    # create arrow curve
+    if rotation_comp in (SIGMA, SIGMA_I):
+        arrow_curve = ParametricFunction(
+            sigma_lambda, color=color, t_range=[start, end],
+        ).set_shade_in_3d(True)
+        arrow_curve.stroke_width = 5
+        result.add(arrow_curve)
+    elif rotation_comp in (TAU, TAU_I):
+        arrow_curve = ParametricFunction(
+            tau_lambda, color=color, t_range=[start, end],
+        ).set_shade_in_3d(True)
+        arrow_curve.stroke_width = 5
+        result.add(arrow_curve)
+
+    # create arrow cone
+    sigma_direction_lambda = lambda t: np.array([0, -np.sin(t), np.cos(t)])
+    tau_direction_lambda = lambda t: np.array([-np.sin(t), 0, np.cos(t)])
+    direction = np.array([0,0,0])
+    end_point = np.array([0,0,0])
+    if rotation_comp == SIGMA:
+        direction = sigma_direction_lambda(np.cos(1/3))
+        end_point = start_point_location + sigma_lambda(np.cos(1/3) + eps)
+    elif rotation_comp == SIGMA_I:
+        direction = sigma_direction_lambda(-np.cos(1/3))
+        end_point = start_point_location + sigma_lambda(-np.cos(1/3) + eps)
+    elif rotation_comp == TAU:
+        direction = tau_direction_lambda(np.cos(1/3))
+        end_point = start_point_location + tau_lambda(np.cos(1/3) + eps)
+    elif rotation_comp == TAU_I:
+        direction = tau_direction_lambda(-np.cos(1/3))
+        end_point = start_point_location + tau_lambda(-np.cos(1/3) + eps)
+    arrow_cone = Cone(show_base=True, base_radius=0.15, height=0.5, direction=direction).shift(end_point).set_color(color)
+    result.add(arrow_cone)
+
+    return result
+
 class FirstDecomp(ThreeDScene):
     def construct(self):
         self.move_camera(phi=75 * DEGREES, theta=30 * DEGREES, zoom=.75, run_time=1.5)
@@ -106,6 +157,9 @@ class FirstDecomp(ThreeDScene):
             self.play(FadeIn(origin_dot), Write(point_tex))
             for rotation, label in generate_random_rotations_with_labels(3):
                 rotation_dot = origin_dot.copy()
+
+                # rotation_arrows = VGroup()
+
                 rotation_tex_new = Tex(r"Rotation is: {{$" + label + r"$}}").to_edge(DOWN)
                 self.add_fixed_in_frame_mobjects(rotation_tex_new)
                 # set up animation
@@ -114,8 +168,15 @@ class FirstDecomp(ThreeDScene):
                 # animate all the components of the rotation:
                 for component in rotation:
                     axis_of_rotation, rotation_angle = axis_angle_from_rotation_component(component)
-                    self.play(Rotate(rotation_dot, rotation_angle, about_point=ORIGIN, axis=axis_of_rotation), run_time=1)
+                    # component_arrow = generate_rotation_arrow(rotation_dot, sphere_radius, component)
+                    # rotation_arrows.add(component_arrow)
+                    self.play(
+                        Rotate(rotation_dot, rotation_angle, about_point=ORIGIN, axis=axis_of_rotation), 
+                        # FadeIn(component_arrow),
+                        run_time=1
+                    )
                 self.remove(rotation_tex_old)
+                # self.play(FadeOut(rotation_arrows))
                 rotation_tex_old = rotation_tex_new
             self.play(Unwrite(point_tex, rotation_tex_old, rotation_tex_new))
             self.remove(rotation_tex_new)
@@ -132,7 +193,7 @@ class FirstDecomp(ThreeDScene):
         #   - show altered decomposition
         self.wait(2)
 
-class ConstructingM(ThreeDScene):
+class DefiningM(ThreeDScene):
     def construct(self):
         self.move_camera(phi=75 * DEGREES, theta=30 * DEGREES, zoom=.75, run_time=1.5)
         title = Tex(r"Creating M for reasons. (Paradoxical decomposition of $S^2 \setminus D$)").to_edge(UP)
@@ -164,12 +225,55 @@ class ConstructingM(ThreeDScene):
         self.play(ShowIncreasingSubsets(dots), run_time=3)
         s = "Then of course, we can cover the whole of S2 by taking all rotations in G(tau, sigma) and applying them to M."
         # rotated_point_groups = []
-        for rotation, _label in generate_random_rotations_with_labels(3):
+        for rotation, label in generate_random_rotations_with_labels(3):
+            rotation_tex = Tex(f"Rotating tex by ${label}$").to_edge(DOWN)
             new_point_group = dots.copy()
+            self.add_fixed_in_frame_mobjects(rotation_tex)
             for component in rotation:
                 axis_of_rotation, rotation_angle = axis_angle_from_rotation_component(component)
                 self.play(Rotate(new_point_group, rotation_angle, about_point=ORIGIN, axis=axis_of_rotation), run_time=1)
+            self.remove(rotation_tex)
+        s = "Of course, we can't possibly show all these rotations of M, but hopefully it is clear how S2 can be covered by taking the union of all these rotations of M."
+        s = "This is because, for every element of S2, there is some equivalent point in M. So if we rotate by all possible rotations in G tau sigma, then we will be sure to cover it eventually"
         self.wait(2)
+
+class ActualDecomp(VoiceoverScene):
+    def construct(self):
+        s = "What we've seen in the previous scene can be expressed symbolically as follows"
+        scene_title = Tex("The decomposition (symbolically)", font_size=70).to_edge(UP)
+        self.add(scene_title)
+        decomp_1_tex = MathTex(r"S^2 \setminus D = M \cup W(\sigma) M \cup W(\sigma^{-1}) M \cup W(\tau) M \cup W(\tau^{-1}) M").next_to(scene_title, DOWN).shift(DOWN)
+        self.play(Create(decomp_1_tex))
+        self.wait(0.5)
+        s = "Notice now how similar this is to the decomposition of the free group that we did. In fact we can decompose in the exact same way"
+        decomp_2_tex = Tex(r"The paradoxical decomposition of $S^2 \setminus D$ is then:").next_to(decomp_1_tex, DOWN).shift(DOWN)
+        decomp_3_tex = MathTex(r"S^2 \setminus D &= \sigma^{-1} W(\sigma) M \cup W(\sigma^{-1}) M \\ &= \tau^{-1} W(\tau) M \cup W(\tau^{-1}) M").next_to(decomp_2_tex, DOWN)
+        self.play(Write(decomp_2_tex))
+        self.play(Write(decomp_3_tex))
+        
+        self.wait(2)
+
+class ArrowTest(ThreeDScene):
+    def construct(self):
+        self.move_camera(phi=75 * DEGREES, theta=30 * DEGREES, zoom=.75, run_time=1.5)
+        self.begin_ambient_camera_rotation()
+        axes = ThreeDAxes()
+
+        x_label = axes.get_x_axis_label(Tex(r"x"))
+        y_label = axes.get_y_axis_label(Tex(r"y")).shift(UP * 1.8)
+        z_label = axes.get_z_axis_label(Tex(r"z")).shift(OUT*.25)
+
+        self.play(FadeIn(axes), FadeIn(x_label, y_label, z_label))
+        self.wait(.5)
+
+        sphere_radius = 3
+        sphere = Sphere(radius=sphere_radius, fill_opacity=.35).set_color(BLUE)
+
+        dot = Dot3D(np.array([3, 0, 0]))
+        arrow = generate_rotation_arrow(dot, sphere_radius, SIGMA)
+        self.play(Write(sphere))
+        self.play(FadeIn(arrow))
+        self.wait(1)
 
 if __name__ == "__main__":
     get_random_point_on_sphere(3)

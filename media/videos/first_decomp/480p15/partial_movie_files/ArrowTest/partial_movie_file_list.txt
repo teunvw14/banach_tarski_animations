@@ -1,0 +1,7 @@
+# This file is used internally by FFMPEG.
+file 'file:/Users/teun/coding/python/banach_tarski_animations/media/videos/first_decomp/480p15/partial_movie_files/ArrowTest/3648110222_3459264963_2859354088.mp4'
+file 'file:/Users/teun/coding/python/banach_tarski_animations/media/videos/first_decomp/480p15/partial_movie_files/ArrowTest/670505183_275795906_2859354088.mp4'
+file 'file:/Users/teun/coding/python/banach_tarski_animations/media/videos/first_decomp/480p15/partial_movie_files/ArrowTest/379789785_646192376_229816090.mp4'
+file 'file:/Users/teun/coding/python/banach_tarski_animations/media/videos/first_decomp/480p15/partial_movie_files/ArrowTest/2443352921_1328100469_1057149869.mp4'
+file 'file:/Users/teun/coding/python/banach_tarski_animations/media/videos/first_decomp/480p15/partial_movie_files/ArrowTest/2497497291_3687433568_2296142488.mp4'
+file 'file:/Users/teun/coding/python/banach_tarski_animations/media/videos/first_decomp/480p15/partial_movie_files/ArrowTest/2616017948_1636166871_1382836960.mp4'

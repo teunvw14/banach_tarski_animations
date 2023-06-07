@@ -1,0 +1,2 @@
+# This file is used internally by FFMPEG.
+file 'file:/Users/teun/coding/python/banach_tarski_animations/media/videos/playground/1080p60/partial_movie_files/Rotation/150588042_3459264963_2859354088.mp4'

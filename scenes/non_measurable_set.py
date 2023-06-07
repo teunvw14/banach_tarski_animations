@@ -251,10 +251,10 @@ class NonMeasurableScene(VoiceoverScene):
             s_1_from_M_tex.animate.to_corner(RIGHT + UP).shift(DOWN * .5)
         )
 
-        sigma_intro_text = Tex(r"Then by $\sigma$-additivity:").shift(UP)
+        sigma_intro_text = Tex(r"Then by $\sigma$-additivity and rotation invariance:").shift(UP)
         sigma_additivity_M_tex = MathTex(r"\mu(S^1) = \sum_{\varphi \in \mathbb{Q}} \mu(e^{i\varphi} M) = \sum_{\varphi \in \mathbb{Q}} \mu(M).").next_to(sigma_intro_text, DOWN).shift(DOWN)
 
-        s = "By sigma additivity, we then get the following"
+        s = "By sigma additivity and rotation invariance, we then get the following"
         with self.voiceover(s):
             self.play(
                 FadeIn(sigma_intro_text),
@@ -292,6 +292,8 @@ class NonMeasurableScene(VoiceoverScene):
             )
 
         self.wait(2)
+
+
 
 class SphereRotation(ThreeDScene):
     def construct(self):

@@ -1,0 +1,68 @@
+1
+00:00:00,000 --> 00:00:04,172
+So what we can conclude from all the trees is the following.
+
+2
+00:00:04,266 --> 00:00:08,467
+If we multiply all elements in F2 starting with sigma
+
+3
+00:00:08,567 --> 00:00:11,957
+by sigma inverse on the left, we get all of
+
+4
+00:00:12,057 --> 00:00:17,150
+the free group, except the elements starting with sigma inverse.
+
+5
+00:00:17,200 --> 00:00:21,903
+This is of course equivalent to saying that F2 is the
+
+6
+00:00:22,003 --> 00:00:26,436
+union of sigma inverse W sigma and W sigma inverse
+
+7
+00:00:27,533 --> 00:00:31,802
+But the choice for sigma was arbitrary, we could have just as
+
+8
+00:00:31,902 --> 00:00:36,601
+well chosen to looked at the subtree of elements starting with tau.
+
+9
+00:00:36,666 --> 00:00:40,232
+So we also have that F2 is the union
+
+10
+00:00:40,332 --> 00:00:44,102
+of tau inverse W tau and W tau inverse
+
+11
+00:00:44,200 --> 00:00:48,876
+Let's look at the original partition of F2 that we made.
+
+12
+00:00:48,933 --> 00:00:53,844
+Notice that the parts in the original partition are now disjointly
+
+13
+00:00:53,944 --> 00:00:57,641
+used in the two new partitions that we have found.
+
+14
+00:00:57,733 --> 00:01:02,485
+So what we have now is called a paradoxical decomposition. We
+
+15
+00:01:02,585 --> 00:01:06,861
+have split the free group F2 into five parts, took four
+
+16
+00:01:06,961 --> 00:01:10,759
+of them and sort of shifted two of those parts to
+
+17
+00:01:10,859 --> 00:01:16,089
+create two copies of F2. This is called a paradoxical decomposition
+
