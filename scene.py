@@ -1,5 +1,4 @@
 from manim import *
-from manim_voiceover import VoiceoverScene
 
 class CreateCircle(Scene):
     def construct(self):
